@@ -1,0 +1,86 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  color: #333;
+  font: 300 16px sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+button,
+input {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+}
+
+.container {
+  margin: auto;
+  max-width: 560px;
+  min-width: 320px;
+}
+
+.btn {
+  background: #06c;
+  border-color: #09f;
+  color: #fff;
+}
+
+.btn-danger {
+  background: #f00;
+  border-color: #900;
+  color: #fff;  
+}
+
+.btn-small {
+  padding: 5px;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-center {
+  align-items: center;
+}
+
+.flex .grow-1 {
+  flex-grow: 1;
+}
+
+.input-task {
+  text-align: center;
+}
+
+.input-task input {
+  width: 100%;
+}
+
+.output-task {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-top: 30px;
+}
+
+.output-task li {
+  border-bottom: 1px solid #ccc;
+  padding: 10px 15px;
+}
+
+.output-task li:last-child {
+  border: none;
+}
+
+.output-task li .actions {
+  display: none;
+}
+
+.output-task li:hover .actions {
+  display: block;
+}
