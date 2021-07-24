@@ -6,7 +6,8 @@
     "noImplicitAny": true,
     "lib": ["es7", "dom"],
     "removeComments": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "sourceMap": true
   },
   "include": ["src/**/*"]
 }
