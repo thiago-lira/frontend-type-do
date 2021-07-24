@@ -12,39 +12,22 @@
 <body>
   <div class="container">
     <section class="input-task">
-      <div class="flex">
-        <div class="grow-1">
-          <input type="text">
-        </div>
+      <form id="input-task-form">
+        <div class="flex">
+          <div class="grow-1">
+            <input id="task-title" type="text">
+          </div>
 
-        <div>
-          <button class="btn">
-            Adicionar
-          </button>
+          <div>
+            <button class="btn" id="add-task">
+              Adicionar
+            </button>
+          </div>
         </div>
-      </div>
+      </form>
     </section>
 
-    <section class="output-task">
-      <ul>
-        <li>
-          <div class="flex flex-center">
-            <div class="grow-1">
-              Tarefa Um
-            </div>
-
-            <div class="actions">
-              <button class="btn-small btn-danger">
-                Excluir
-              </button>
-
-              <button class="btn-small">
-                Editar
-              </button>
-            </div>
-          </div>
-        </li>
-      </ul>
+    <section class="output-task" id="tasks-view">
     </section>
   </div>
 
