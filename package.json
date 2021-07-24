@@ -1,0 +1,10 @@
+{
+  "name": "frontend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "Thiago Lira <lira_thiago@msn.com>",
+  "license": "MIT",
+  "scripts": {
+    "compile": "tsc -w"
+  }
+}
