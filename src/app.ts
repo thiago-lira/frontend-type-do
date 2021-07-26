@@ -16,17 +16,4 @@ taskForm.addEventListener('submit', (event) => {
   event.preventDefault();
 });
 
-taskController
-  .listTasks()
-  .then(() => {
-    document
-      .querySelectorAll('.btn-delete')
-      .forEach((button) => {
-        button.addEventListener('click', (event) => {
-          const target = event.target as HTMLElement
-          const id = target.dataset.id as string
-          taskController.deleteTask(id)
-        })
-      })
-  })
-
+taskController.listTasks()

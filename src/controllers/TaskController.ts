@@ -1,11 +1,20 @@
 import Task from '../models/Task'
 import TasksView from '../views/TasksView'
 import TaskService from '../services/TaskService'
+import ISubscribe from '../interfaces/ISubscribe'
 
-class TaskController {
+class TaskController implements ISubscribe {
   public readonly tasks: Task[] = []
+  private view: TasksView
 
-  constructor(private view: TasksView) {}
+  constructor(view: TasksView) {
+    this.view = view
+    this.view.subscribe(this)
+  }
+
+  execute(task: Task) {
+    this.deleteTask(task.id)
+  }
 
   saveTask(task: Task) {
     TaskService
