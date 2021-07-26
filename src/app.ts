@@ -1,6 +1,6 @@
-import TaskController from "./controllers/TaskController.js";
-import Task from "./models/Task.js";
-import TasksView from "./views/TasksView.js";
+import TaskController from "./controllers/TaskController";
+import Task from "./models/Task";
+import TasksView from "./views/TasksView";
 
 const taskForm = document.querySelector('#input-task-form') as HTMLFormElement;
 const tasksView = new TasksView('#tasks-view')
@@ -15,3 +15,18 @@ taskForm.addEventListener('submit', (event) => {
   title.value = '';
   event.preventDefault();
 });
+
+taskController
+  .listTasks()
+  .then(() => {
+    document
+      .querySelectorAll('.btn-delete')
+      .forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const target = event.target as HTMLElement
+          const id = target.dataset.id as string
+          taskController.deleteTask(id)
+        })
+      })
+  })
+

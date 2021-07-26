@@ -1,9 +1,9 @@
 class Task {
-  private readonly _date = new Date();
-  public readonly done = false;
-
   constructor(
-    public readonly title: string
+    public readonly title: string,
+    private readonly _date = new Date(),
+    public readonly done = false,
+    public readonly id = 0
   ) {}
 
   get date() {

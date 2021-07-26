@@ -1,5 +1,6 @@
-import Task from "../models/Task";
-import TasksView from "../views/TasksView";
+import Task from '../models/Task'
+import TasksView from '../views/TasksView'
+import TaskService from '../services/TaskService'
 
 class TaskController {
   public readonly tasks: Task[] = []
@@ -7,8 +8,27 @@ class TaskController {
   constructor(private view: TasksView) {}
 
   saveTask(task: Task) {
-    this.tasks.push(task);
-    this.view.render(this.tasks)
+    TaskService
+      .save(task)
+      .then(() => {
+        this.listTasks()
+      })
+  }
+
+  deleteTask(id: string) {
+    return TaskService
+      .delete(id)
+      .then(() => { 
+        this.listTasks()
+      })
+  }
+
+  listTasks() {
+    return TaskService
+      .getList()
+      .then((data: any) => { 
+        this.view.render(data.tasks)
+      })
   }
 }
 

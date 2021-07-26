@@ -27,11 +27,11 @@ class TasksView {
                 </div>
 
                 <div class="actions">
-                  <button class="btn-small btn-danger">
+                  <button data-id="${task.id}" class="btn-delete btn-small btn-danger">
                     Excluir
                   </button>
 
-                  <button class="btn-small">
+                  <button data-id="${task.id}" class="btn-edit btn-small">
                     Editar
                   </button>
                 </div>
