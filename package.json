@@ -5,6 +5,16 @@
   "author": "Thiago Lira <lira_thiago@msn.com>",
   "license": "MIT",
   "scripts": {
-    "compile": "tsc -w"
+    "server": "webpack --watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.3.5",
+    "webpack-cli": "^4.7.2"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "ts-loader": "^9.2.4",
+    "webpack": "^5.46.0",
+    "webpack-dev-server": "^3.11.2"
   }
 }

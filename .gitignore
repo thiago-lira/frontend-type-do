@@ -1,2 +1,6 @@
+.env
+.DS_Store
+public
+node_modules
 app/js
 *.sw?
