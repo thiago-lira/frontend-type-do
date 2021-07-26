@@ -1,19 +1,44 @@
-import Task from "../models/Task";
+import Task from '../models/Task';
+import TaskController from '../controllers/TaskController'
+import ISubscribe from '../interfaces/ISubscribe'
 
 class TasksView {
-  private element: HTMLElement;
+  private element: HTMLElement
+  private subscribers: Array<ISubscribe> = []
 
   constructor(selector: string) {
     this.element = document.querySelector(selector) as HTMLElement;
   }
 
-  render(model: Task[]) {
-    this.element.innerHTML = this.getTemplate(model);
+  subscribe(subscriber: ISubscribe) {
+    this.subscribers.push(subscriber)
   }
 
-  getTemplate(model: Task[]): string {
+  publish(task: Task): void {
+    this.subscribers.forEach((sub) => {
+      sub.execute(task)
+    })
+  }
+
+  render(model: Array<Task>) {
+    this.element.innerHTML = this.getTemplate(model);
+    this.element
+      .querySelectorAll('.btn-delete')
+      .forEach((button) => {
+        button.addEventListener('click', (event) => {
+          const target = event.target as HTMLElement
+          const id = target.dataset.id as string
+          const task = model.find((task) => task.id === id)
+          if (task) {
+            this.publish(task)
+          }
+        })
+      })
+  }
+
+  getTemplate(model: Array<Task>): string {
     if (model.length === 0) {
-      return ``;
+      return `<p class="text-center">Não há tarefa cadastrada</p>`;
     }
 
     return `
