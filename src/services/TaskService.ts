@@ -16,15 +16,17 @@ class TaskService {
 
   static getList({ from = 0 } = {}) {
     return axios.get(`/api/_search?from=${from}`)
-      .then(({ data: { hits: { hits, total } } }) => {
-        return {
-          total: total.value,
-          tasks: hits.map((item: any) => {
-            const { _id,  _source: { _date, done, title } } = item
-            return new Task(title, _date, done, _id)
-          })
-        }
-      })
+      .then(({ data: { hits: { hits, total } } }) => ({
+        total: total.value,
+        tasks: this.createTasksList(hits)
+      }))
+  }
+
+  private static createTasksList(hits: any) {
+    return hits.map((item: any) => {
+      const { _id,  _source: { _date, done, title } } = item
+      return new Task(title, _date, done, _id)
+    })
   }
 }
 
